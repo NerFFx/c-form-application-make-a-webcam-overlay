@@ -14,9 +14,9 @@ namespace test
 {
     public partial class Form1 : Form
     {
-        private FilterInfoCollection webcam; //webcam isminde tanımladığımız değişken bilgisayara kaç kamera bağlıysa onları tutan bir dizi.
+        private FilterInfoCollection webcam; 
 
-        private VideoCaptureDevice cam; //cam ise bizim kullanacağımız aygıt.
+        private VideoCaptureDevice cam; 
 
         public Form1()
         {
@@ -27,13 +27,13 @@ namespace test
         {
             webcam = new
 
-           FilterInfoCollection(FilterCategory.VideoInputDevice); //webcam dizisine mevcut kameraları dolduruyoruz.
+           FilterInfoCollection(FilterCategory.VideoInputDevice);
 
             foreach (FilterInfo item in webcam)
 
             {
 
-                comboBox1.Items.Add(item.Name); //kameraları combobox a dolduruyoruz.
+                comboBox1.Items.Add(item.Name);
 
             }
 
@@ -45,11 +45,11 @@ namespace test
         {
             cam = new
 
-           VideoCaptureDevice(webcam[comboBox1.SelectedIndex].MonikerString); //başlaya basıldığıdnda yukarda tanımladığımız cam değişkenine comboboxta seçilmş olan kamerayı atıyoruz.
+           VideoCaptureDevice(webcam[comboBox1.SelectedIndex].MonikerString); 
 
             cam.NewFrame += new NewFrameEventHandler(cam_NewFrame);
 
-            cam.Start(); //kamerayı başlatıyoruz.
+            cam.Start();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -62,7 +62,7 @@ namespace test
 
         {
 
-            Bitmap bmp = (Bitmap)eventArgs.Frame.Clone(); //kısaca bu eventta kameradan alınan görüntüyü picturebox a atıyoruz.
+            Bitmap bmp = (Bitmap)eventArgs.Frame.Clone();
 
             pictureBox1.Image = bmp;
 
@@ -86,7 +86,7 @@ namespace test
 
             swf.Filter = "(*.jpg)|*.jpg|Bitma*p(*.bmp)|*.bmp";
 
-            DialogResult dialog = swf.ShowDialog();  //resmi çekiyoruz ve aşağıda da kaydediyoruz.
+            DialogResult dialog = swf.ShowDialog();
 
 
             if (dialog == DialogResult.OK)
